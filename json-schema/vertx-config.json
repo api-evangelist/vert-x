@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/vert-x/json-schema/vertx-config.json",
+  "title": "Vert.x Application Configuration",
+  "description": "JSON Schema for Vert.x application configuration options including event bus, cluster, HTTP server, and deployment settings.",
+  "type": "object",
+  "properties": {
+    "http": {
+      "type": "object",
+      "description": "HTTP server configuration.",
+      "properties": {
+        "port": {
+          "type": "integer",
+          "description": "The port the HTTP server listens on.",
+          "default": 8080,
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "host": {
+          "type": "string",
+          "description": "The host address to bind.",
+          "default": "0.0.0.0"
+        },
+        "ssl": {
+          "type": "boolean",
+          "description": "Enable SSL/TLS.",
+          "default": false
+        },
+        "keyStorePath": {
+          "type": "string",
+          "description": "Path to the key store for SSL."
+        },
+        "keyStorePassword": {
+          "type": "string",
+          "description": "Password for the key store."
+        },
+        "compressionSupported": {
+          "type": "boolean",
+          "description": "Enable HTTP compression.",
+          "default": false
+        },
+        "idleTimeout": {
+          "type": "integer",
+          "description": "Idle timeout in seconds.",
+          "default": 0
+        },
+        "maxWebSocketFrameSize": {
+          "type": "integer",
+          "description": "Maximum WebSocket frame size in bytes.",
+          "default": 65536
+        }
+      },
+      "additionalProperties": true
+    },
+    "eventBus": {
+      "type": "object",
+      "description": "Event bus configuration for clustered and local mode.",
+      "properties": {
+        "clusterPublicHost": {
+          "type": "string",
+          "description": "Public host address for cluster event bus."
+        },
+        "clusterPublicPort": {
+          "type": "integer",
+          "description": "Public port for cluster event bus.",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "clusterPingInterval": {
+          "type": "integer",
+          "description": "Cluster ping interval in milliseconds.",
+          "default": 20000
+        },
+        "clusterPingReplyInterval": {
+          "type": "integer",
+          "description": "Cluster ping reply interval in milliseconds.",
+          "default": 20000
+        },
+        "connectTimeout": {
+          "type": "integer",
+          "description": "Event bus connect timeout in milliseconds.",
+          "default": 60000
+        }
+      },
+      "additionalProperties": true
+    },
+    "cluster": {
+      "type": "object",
+      "description": "Cluster manager settings.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable clustering.",
+          "default": false
+        },
+        "clusterManager": {
+          "type": "string",
+          "description": "Fully qualified class name of the cluster manager implementation."
+        }
+      },
+      "additionalProperties": true
+    },
+    "workerPoolSize": {
+      "type": "integer",
+      "description": "Maximum number of worker threads.",
+      "default": 20,
+      "minimum": 1
+    },
+    "eventLoopPoolSize": {
+      "type": "integer",
+      "description": "Number of event loop threads.",
+      "minimum": 1
+    },
+    "internalBlockingPoolSize": {
+      "type": "integer",
+      "description": "Size of the internal blocking pool.",
+      "default": 20,
+      "minimum": 1
+    },
+    "haEnabled": {
+      "type": "boolean",
+      "description": "Enable high availability.",
+      "default": false
+    },
+    "haGroup": {
+      "type": "string",
+      "description": "High availability group name.",
+      "default": "__DEFAULT__"
+    },
+    "quorumSize": {
+      "type": "integer",
+      "description": "Quorum size for HA.",
+      "default": 1,
+      "minimum": 1
+    },
+    "blockedThreadCheckInterval": {
+      "type": "integer",
+      "description": "Blocked thread check interval in milliseconds.",
+      "default": 1000
+    },
+    "maxEventLoopExecuteTime": {
+      "type": "integer",
+      "description": "Max event loop execute time in nanoseconds.",
+      "default": 2000000000
+    },
+    "maxWorkerExecuteTime": {
+      "type": "integer",
+      "description": "Max worker execute time in nanoseconds.",
+      "default": 60000000000
+    },
+    "warningExceptionTime": {
+      "type": "integer",
+      "description": "Warning exception time in nanoseconds.",
+      "default": 5000000000
+    }
+  },
+  "additionalProperties": true
+}

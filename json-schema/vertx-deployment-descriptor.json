@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/vert-x/json-schema/vertx-deployment-descriptor.json",
+  "title": "Vert.x Verticle Deployment Descriptor",
+  "description": "JSON Schema for Vert.x verticle deployment options used when deploying verticles programmatically or via configuration.",
+  "type": "object",
+  "properties": {
+    "main": {
+      "type": "string",
+      "description": "The main verticle class name or script path to deploy."
+    },
+    "options": {
+      "type": "object",
+      "description": "Deployment options for the verticle.",
+      "properties": {
+        "instances": {
+          "type": "integer",
+          "description": "Number of verticle instances to deploy.",
+          "default": 1,
+          "minimum": 1
+        },
+        "worker": {
+          "type": "boolean",
+          "description": "Deploy as a worker verticle.",
+          "default": false
+        },
+        "multiThreaded": {
+          "type": "boolean",
+          "description": "Deploy as a multi-threaded worker verticle.",
+          "default": false
+        },
+        "ha": {
+          "type": "boolean",
+          "description": "Deploy with high availability.",
+          "default": false
+        },
+        "isolationGroup": {
+          "type": "string",
+          "description": "Isolation group for the verticle classloader."
+        },
+        "isolatedClasses": {
+          "type": "array",
+          "description": "List of class name patterns to isolate.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extraClasspath": {
+          "type": "array",
+          "description": "Extra classpath entries for the verticle.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "config": {
+          "type": "object",
+          "description": "JSON configuration passed to the verticle.",
+          "additionalProperties": true
+        },
+        "workerPoolName": {
+          "type": "string",
+          "description": "Name of the worker pool to use."
+        },
+        "workerPoolSize": {
+          "type": "integer",
+          "description": "Size of the worker pool.",
+          "minimum": 1
+        },
+        "maxWorkerExecuteTime": {
+          "type": "integer",
+          "description": "Max worker execute time in nanoseconds."
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "required": ["main"],
+  "additionalProperties": true
+}

@@ -40,6 +40,12 @@ apis:
         url: https://vertx.io/docs/
       - type: Getting Started
         url: https://vertx.io/get-started/
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/json-schema/vertx-config.json
+      - type: JSONSchema
+        url: >-
+          https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/json-schema/vertx-deployment-descriptor.json
 common:
   - type: Website
     url: https://vertx.io/
