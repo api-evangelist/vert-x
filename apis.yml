@@ -1,11 +1,19 @@
 aid: vert-x
 name: Vert.x
 description: >-
-  Eclipse Vert.x is a toolkit for building reactive applications on the JVM with support for multiple languages.
+  Eclipse Vert.x is a toolkit for building reactive applications on the JVM,
+  providing support for multiple languages including Java, JavaScript, Groovy,
+  Ruby, and Kotlin with an event-driven and non-blocking architecture.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Microservices
+  - Java
+  - Reactive
+  - Event-Driven
+  - JVM
+  - Polyglot
+  - Frameworks
 url: >-
   https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/apis.yml
 created: '2026-03-26'
@@ -15,14 +23,34 @@ apis:
   - aid: vert-x:vert-x
     name: Vert.x
     description: >-
-      Eclipse Vert.x is a toolkit for building reactive applications on the JVM with support for multiple languages.
-    humanURL: https://github.com/api-evangelist/vert-x
+      Eclipse Vert.x is a toolkit for building reactive applications on the JVM,
+      providing support for multiple languages including Java, JavaScript, Groovy,
+      Ruby, and Kotlin with an event-driven and non-blocking architecture.
+    humanURL: https://vertx.io/
     tags:
       - Microservices
-    properties: []
+      - Java
+      - Reactive
+      - Event-Driven
+      - JVM
+      - Polyglot
+      - Frameworks
+    properties:
+      - type: Documentation
+        url: https://vertx.io/docs/
+      - type: Getting Started
+        url: https://vertx.io/get-started/
 common:
   - type: Website
-    url: https://github.com/api-evangelist/vert-x
+    url: https://vertx.io/
+  - type: Documentation
+    url: https://vertx.io/docs/
+  - type: Getting Started
+    url: https://vertx.io/get-started/
+  - type: GitHub Organization
+    url: https://github.com/eclipse-vertx
+  - type: Blog
+    url: https://vertx.io/blog/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
