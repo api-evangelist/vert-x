@@ -1,0 +1,28 @@
+aid: vert-x
+name: Vert.x
+description: >-
+  Eclipse Vert.x is a toolkit for building reactive applications on the JVM with support for multiple languages.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Microservices
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/apis.yml
+created: '2026-03-26'
+modified: '2026-03-26'
+specificationVersion: '0.19'
+apis:
+  - aid: vert-x:vert-x
+    name: Vert.x
+    description: >-
+      Eclipse Vert.x is a toolkit for building reactive applications on the JVM with support for multiple languages.
+    humanURL: https://github.com/api-evangelist/vert-x
+    tags:
+      - Microservices
+    properties: []
+common:
+  - type: Website
+    url: https://github.com/api-evangelist/vert-x
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
