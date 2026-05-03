@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://github.com/api-evangelist/vert-x/json-structure/vertx-config-structure.json",
+  "name": "Vert.x Application Configuration",
+  "description": "JSON Structure for Vert.x application configuration options including event bus, cluster, HTTP server, and deployment settings.",
+  "type": "object",
+  "properties": {
+    "http": {
+      "type": "object",
+      "description": "HTTP server configuration.",
+      "properties": {
+        "port": {
+          "type": "int32",
+          "description": "The port the HTTP server listens on."
+        },
+        "host": {
+          "type": "string",
+          "description": "The host address to bind."
+        },
+        "ssl": {
+          "type": "boolean",
+          "description": "Enable SSL/TLS."
+        },
+        "keyStorePath": {
+          "type": "string",
+          "description": "Path to the key store for SSL."
+        },
+        "keyStorePassword": {
+          "type": "string",
+          "description": "Password for the key store."
+        },
+        "compressionSupported": {
+          "type": "boolean",
+          "description": "Enable HTTP compression."
+        },
+        "idleTimeout": {
+          "type": "int32",
+          "description": "Idle timeout in seconds."
+        },
+        "maxWebSocketFrameSize": {
+          "type": "int32",
+          "description": "Maximum WebSocket frame size in bytes."
+        }
+      }
+    },
+    "eventBus": {
+      "type": "object",
+      "description": "Event bus configuration for clustered and local mode.",
+      "properties": {
+        "clusterPublicHost": {
+          "type": "string",
+          "description": "Public host address for cluster event bus."
+        },
+        "clusterPublicPort": {
+          "type": "int32",
+          "description": "Public port for cluster event bus."
+        },
+        "clusterPingInterval": {
+          "type": "int32",
+          "description": "Cluster ping interval in milliseconds."
+        },
+        "clusterPingReplyInterval": {
+          "type": "int32",
+          "description": "Cluster ping reply interval in milliseconds."
+        },
+        "connectTimeout": {
+          "type": "int32",
+          "description": "Event bus connect timeout in milliseconds."
+        }
+      }
+    },
+    "cluster": {
+      "type": "object",
+      "description": "Cluster manager settings.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Enable clustering."
+        },
+        "clusterManager": {
+          "type": "string",
+          "description": "Fully qualified class name of the cluster manager implementation."
+        }
+      }
+    },
+    "workerPoolSize": {
+      "type": "int32",
+      "description": "Maximum number of worker threads."
+    },
+    "eventLoopPoolSize": {
+      "type": "int32",
+      "description": "Number of event loop threads."
+    },
+    "internalBlockingPoolSize": {
+      "type": "int32",
+      "description": "Size of the internal blocking pool."
+    },
+    "haEnabled": {
+      "type": "boolean",
+      "description": "Enable high availability."
+    },
+    "haGroup": {
+      "type": "string",
+      "description": "High availability group name."
+    },
+    "quorumSize": {
+      "type": "int32",
+      "description": "Quorum size for HA."
+    },
+    "blockedThreadCheckInterval": {
+      "type": "int32",
+      "description": "Blocked thread check interval in milliseconds."
+    },
+    "maxEventLoopExecuteTime": {
+      "type": "int64",
+      "description": "Max event loop execute time in nanoseconds."
+    },
+    "maxWorkerExecuteTime": {
+      "type": "int64",
+      "description": "Max worker execute time in nanoseconds."
+    },
+    "warningExceptionTime": {
+      "type": "int64",
+      "description": "Warning exception time in nanoseconds."
+    }
+  }
+}

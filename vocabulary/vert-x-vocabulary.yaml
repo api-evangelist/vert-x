@@ -1,0 +1,226 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Vert.x"
+  description: "Unified vocabulary for Eclipse Vert.x reactive JVM toolkit covering verticles, event bus, HTTP server, clustering, health checks, and deployment configuration."
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+operational:
+  apis:
+    - namespace: vertx-core
+      version: "5.0.0"
+      baseUrl: https://vertx.io
+      status: active
+    - namespace: vertx-web
+      version: "5.0.0"
+      baseUrl: https://vertx.io
+      status: active
+    - namespace: vertx-openapi
+      version: "5.0.0"
+      baseUrl: https://vertx.io
+      status: active
+    - namespace: vertx-grpc
+      version: "5.0.0"
+      baseUrl: https://vertx.io
+      status: active
+    - namespace: vertx-sql-client
+      version: "5.0.0"
+      baseUrl: https://vertx.io
+      status: active
+    - namespace: vertx-auth
+      version: "5.0.0"
+      baseUrl: https://vertx.io
+      status: active
+    - namespace: vertx-health-check
+      version: "5.0.0"
+      baseUrl: https://vertx.io
+      status: active
+
+  resources:
+    - name: verticles
+      description: "Vert.x deployment units with isolated classloaders and lifecycle"
+    - name: event-bus
+      description: "Distributed message-passing backbone for inter-verticle communication"
+    - name: http-server
+      description: "Reactive HTTP/1.1 and HTTP/2 server with WebSocket support"
+    - name: http-client
+      description: "Reactive non-blocking HTTP client"
+    - name: health-checks
+      description: "Composable health check procedures for Kubernetes probes"
+    - name: config
+      description: "Application and verticle configuration objects"
+    - name: cluster
+      description: "Distributed cluster manager and event bus bridge configuration"
+
+  actions:
+    - name: deploy-verticle
+      pattern: write
+      description: "Deploy a verticle with deployment options"
+    - name: undeploy-verticle
+      pattern: write
+      description: "Undeploy a running verticle by deployment ID"
+    - name: publish-event
+      pattern: write
+      description: "Publish a message to an event bus address"
+    - name: send-message
+      pattern: write
+      description: "Send a point-to-point message on the event bus"
+    - name: start-http-server
+      pattern: write
+      description: "Start an HTTP server on configured host and port"
+    - name: check-health
+      pattern: read
+      description: "Perform health check and return aggregated status"
+    - name: register-health-procedure
+      pattern: write
+      description: "Register a named health check procedure"
+
+  schemas:
+    core:
+      - name: VertxConfiguration
+        description: "Root Vert.x instance configuration with thread pools and event loop settings"
+      - name: DeploymentDescriptor
+        description: "Verticle deployment descriptor with main class and options"
+      - name: DeploymentOptions
+        description: "Options for verticle deployment including instance count and HA"
+      - name: EventBusConfig
+        description: "Event bus configuration for clustered networking"
+      - name: HttpServerConfig
+        description: "HTTP server host, port, SSL, and compression configuration"
+      - name: ClusterConfig
+        description: "Cluster manager selection and enabled flag"
+      - name: HealthCheckResponse
+        description: "Health check HTTP endpoint response with status and check results"
+      - name: HealthCheckResult
+        description: "Individual health check result with ID, status, and diagnostic data"
+
+  parameters:
+    identifiers:
+      - name: deploymentId
+        description: "Unique identifier returned when a verticle is deployed"
+        type: string
+      - name: address
+        description: "Event bus address for message routing"
+        type: string
+    filters:
+      - name: status
+        description: "Health check status filter (UP, DOWN)"
+        type: string
+      - name: port
+        description: "HTTP server port number"
+        type: integer
+
+  enums:
+    health-status:
+      - UP
+      - DOWN
+    verticle-types:
+      - Standard
+      - Worker
+      - MultiThreadedWorker
+    event-delivery-modes:
+      - Publish
+      - Send
+      - Request
+    cluster-managers:
+      - Hazelcast
+      - Infinispan
+      - Zookeeper
+      - ApacheIgnite
+    supported-languages:
+      - Java
+      - Kotlin
+      - JavaScript
+      - Groovy
+      - Ruby
+      - Scala
+
+  authentication:
+    schemes:
+      - name: JWTAuth
+        type: http
+        scheme: bearer
+        description: "JWT bearer token authentication via vertx-auth-jwt"
+      - name: OAuth2
+        type: oauth2
+        description: "OAuth 2.0 authentication via vertx-auth-oauth2"
+
+capability:
+  workflows:
+    - name: reactive-microservice-development
+      description: "Build and deploy reactive microservices with Vert.x Web, OpenAPI validation, and health checks"
+      domains:
+        - Reactive Programming
+        - Microservices
+        - JVM Development
+
+  personas:
+    - id: java-backend-developer
+      name: Java Backend Developer
+      description: "Java developers building reactive microservices and event-driven applications with Vert.x"
+      workflows:
+        - reactive-microservice-development
+
+    - id: platform-engineer
+      name: Platform Engineer
+      description: "Engineers deploying and operating Vert.x applications on Kubernetes and cloud platforms"
+      workflows:
+        - reactive-microservice-development
+
+    - id: api-developer
+      name: API Developer
+      description: "Developers building contract-first REST APIs using vertx-openapi and vertx-web"
+      workflows:
+        - reactive-microservice-development
+
+  domains:
+    - name: Reactive Programming
+      description: "Event-driven, non-blocking programming model using Vert.x Futures and async handlers"
+    - name: Microservices
+      description: "Lightweight microservice architecture using verticles, event bus, and HTTP routing"
+    - name: JVM Development
+      description: "Polyglot JVM development supporting Java, Kotlin, Groovy, Scala, and more"
+
+  namespaces:
+    consumed:
+      - name: vertx-core
+        baseUri: https://vertx.io
+      - name: vertx-web
+        baseUri: https://vertx.io
+      - name: vertx-openapi
+        baseUri: https://vertx.io
+
+  binds: []
+
+crossReference:
+  - resource: verticles
+    operations:
+      - deploy-verticle
+      - undeploy-verticle
+    personas:
+      - Java Backend Developer
+      - Platform Engineer
+
+  - resource: event-bus
+    operations:
+      - publish-event
+      - send-message
+    personas:
+      - Java Backend Developer
+      - API Developer
+
+  - resource: http-server
+    operations:
+      - start-http-server
+    personas:
+      - Java Backend Developer
+      - API Developer
+
+  - resource: health-checks
+    operations:
+      - check-health
+      - register-health-procedure
+    personas:
+      - Platform Engineer
+      - Java Backend Developer

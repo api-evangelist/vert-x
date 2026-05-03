@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://github.com/api-evangelist/vert-x/json-structure/vertx-deployment-descriptor-structure.json",
+  "name": "Vert.x Verticle Deployment Descriptor",
+  "description": "JSON Structure for Vert.x verticle deployment options used when deploying verticles programmatically or via configuration.",
+  "type": "object",
+  "properties": {
+    "main": {
+      "type": "string",
+      "description": "The main verticle class name or script path to deploy."
+    },
+    "options": {
+      "type": "object",
+      "description": "Deployment options for the verticle.",
+      "properties": {
+        "instances": {
+          "type": "int32",
+          "description": "Number of verticle instances to deploy."
+        },
+        "worker": {
+          "type": "boolean",
+          "description": "Deploy as a worker verticle."
+        },
+        "multiThreaded": {
+          "type": "boolean",
+          "description": "Deploy as a multi-threaded worker verticle."
+        },
+        "ha": {
+          "type": "boolean",
+          "description": "Deploy with high availability."
+        },
+        "isolationGroup": {
+          "type": "string",
+          "description": "Isolation group for the verticle classloader."
+        },
+        "isolatedClasses": {
+          "type": "array",
+          "description": "List of class name patterns to isolate.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "extraClasspath": {
+          "type": "array",
+          "description": "Extra classpath entries for the verticle.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "config": {
+          "type": "object",
+          "description": "JSON configuration passed to the verticle."
+        },
+        "workerPoolName": {
+          "type": "string",
+          "description": "Name of the worker pool to use."
+        },
+        "workerPoolSize": {
+          "type": "int32",
+          "description": "Size of the worker pool."
+        },
+        "maxWorkerExecuteTime": {
+          "type": "int64",
+          "description": "Max worker execute time in nanoseconds."
+        }
+      }
+    }
+  },
+  "required": ["main"]
+}

@@ -1,0 +1,194 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "vertx": "https://vertx.io/vocabulary/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "eclipse": "https://www.eclipse.org/vocabulary/",
+
+    "VertxConfiguration": "vertx:VertxConfiguration",
+    "VerticleDeployment": "vertx:VerticleDeployment",
+    "HealthCheckResponse": "vertx:HealthCheckResponse",
+    "EventBusConfig": "vertx:EventBusConfig",
+    "ClusterConfig": "vertx:ClusterConfig",
+    "HttpServerConfig": "vertx:HttpServerConfig",
+    "HealthCheckResult": "vertx:HealthCheckResult",
+
+    "http": {
+      "@id": "vertx:httpConfig",
+      "@type": "@id"
+    },
+    "eventBus": {
+      "@id": "vertx:eventBusConfig",
+      "@type": "@id"
+    },
+    "cluster": {
+      "@id": "vertx:clusterConfig",
+      "@type": "@id"
+    },
+    "port": {
+      "@id": "vertx:port",
+      "@type": "xsd:integer"
+    },
+    "host": {
+      "@id": "vertx:host",
+      "@type": "xsd:string"
+    },
+    "ssl": {
+      "@id": "vertx:ssl",
+      "@type": "xsd:boolean"
+    },
+    "keyStorePath": {
+      "@id": "vertx:keyStorePath",
+      "@type": "xsd:string"
+    },
+    "keyStorePassword": {
+      "@id": "vertx:keyStorePassword",
+      "@type": "xsd:string"
+    },
+    "compressionSupported": {
+      "@id": "vertx:compressionSupported",
+      "@type": "xsd:boolean"
+    },
+    "idleTimeout": {
+      "@id": "vertx:idleTimeout",
+      "@type": "xsd:integer"
+    },
+    "maxWebSocketFrameSize": {
+      "@id": "vertx:maxWebSocketFrameSize",
+      "@type": "xsd:integer"
+    },
+    "clusterPublicHost": {
+      "@id": "vertx:clusterPublicHost",
+      "@type": "xsd:string"
+    },
+    "clusterPublicPort": {
+      "@id": "vertx:clusterPublicPort",
+      "@type": "xsd:integer"
+    },
+    "clusterPingInterval": {
+      "@id": "vertx:clusterPingInterval",
+      "@type": "xsd:integer"
+    },
+    "clusterPingReplyInterval": {
+      "@id": "vertx:clusterPingReplyInterval",
+      "@type": "xsd:integer"
+    },
+    "connectTimeout": {
+      "@id": "vertx:connectTimeout",
+      "@type": "xsd:integer"
+    },
+    "enabled": {
+      "@id": "vertx:enabled",
+      "@type": "xsd:boolean"
+    },
+    "clusterManager": {
+      "@id": "vertx:clusterManager",
+      "@type": "xsd:string"
+    },
+    "workerPoolSize": {
+      "@id": "vertx:workerPoolSize",
+      "@type": "xsd:integer"
+    },
+    "eventLoopPoolSize": {
+      "@id": "vertx:eventLoopPoolSize",
+      "@type": "xsd:integer"
+    },
+    "internalBlockingPoolSize": {
+      "@id": "vertx:internalBlockingPoolSize",
+      "@type": "xsd:integer"
+    },
+    "haEnabled": {
+      "@id": "vertx:haEnabled",
+      "@type": "xsd:boolean"
+    },
+    "haGroup": {
+      "@id": "vertx:haGroup",
+      "@type": "xsd:string"
+    },
+    "quorumSize": {
+      "@id": "vertx:quorumSize",
+      "@type": "xsd:integer"
+    },
+    "blockedThreadCheckInterval": {
+      "@id": "vertx:blockedThreadCheckInterval",
+      "@type": "xsd:integer"
+    },
+    "maxEventLoopExecuteTime": {
+      "@id": "vertx:maxEventLoopExecuteTime",
+      "@type": "xsd:long"
+    },
+    "maxWorkerExecuteTime": {
+      "@id": "vertx:maxWorkerExecuteTime",
+      "@type": "xsd:long"
+    },
+    "warningExceptionTime": {
+      "@id": "vertx:warningExceptionTime",
+      "@type": "xsd:long"
+    },
+    "main": {
+      "@id": "vertx:mainVerticle",
+      "@type": "xsd:string"
+    },
+    "options": {
+      "@id": "vertx:deploymentOptions",
+      "@type": "@id"
+    },
+    "instances": {
+      "@id": "vertx:instances",
+      "@type": "xsd:integer"
+    },
+    "worker": {
+      "@id": "vertx:worker",
+      "@type": "xsd:boolean"
+    },
+    "multiThreaded": {
+      "@id": "vertx:multiThreaded",
+      "@type": "xsd:boolean"
+    },
+    "ha": {
+      "@id": "vertx:ha",
+      "@type": "xsd:boolean"
+    },
+    "isolationGroup": {
+      "@id": "vertx:isolationGroup",
+      "@type": "xsd:string"
+    },
+    "isolatedClasses": {
+      "@id": "vertx:isolatedClasses",
+      "@container": "@list"
+    },
+    "extraClasspath": {
+      "@id": "vertx:extraClasspath",
+      "@container": "@list"
+    },
+    "config": {
+      "@id": "vertx:verticleConfig",
+      "@type": "@id"
+    },
+    "workerPoolName": {
+      "@id": "vertx:workerPoolName",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "schema:status",
+      "@type": "xsd:string"
+    },
+    "checks": {
+      "@id": "vertx:healthChecks",
+      "@container": "@list"
+    },
+    "id": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "vertx:checkData",
+      "@type": "@id"
+    },
+    "outcome": {
+      "@id": "vertx:outcome",
+      "@type": "xsd:string"
+    }
+  }
+}

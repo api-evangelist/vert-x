@@ -1,0 +1,41 @@
+{
+  "status": "UP",
+  "checks": [
+    {
+      "id": "database",
+      "status": "UP",
+      "data": {
+        "pool": "postgresql-pool",
+        "activeConnections": 3,
+        "maxConnections": 10
+      }
+    },
+    {
+      "id": "redis-cache",
+      "status": "UP",
+      "data": {
+        "responseTime": "2ms",
+        "connected": true
+      }
+    },
+    {
+      "id": "kafka-consumer",
+      "status": "UP",
+      "data": {
+        "topic": "orders",
+        "lag": 0,
+        "partitions": 3
+      }
+    },
+    {
+      "id": "disk-space",
+      "status": "UP",
+      "data": {
+        "free": "45GB",
+        "total": "100GB",
+        "usedPercent": 55
+      }
+    }
+  ],
+  "outcome": "UP"
+}

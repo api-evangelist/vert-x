@@ -1,0 +1,243 @@
+extends: spectral:oas
+rules:
+
+  # Info Object Rules
+  info-title-vertx-prefix:
+    description: API title must start with "Vert.x" to align with Eclipse Vert.x naming conventions.
+    severity: warn
+    given: "$.info.title"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Vert\\.x"
+
+  info-description-required:
+    description: API info object must have a description explaining the component purpose.
+    severity: error
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+
+  info-version-semver:
+    description: API version should follow Semantic Versioning (MAJOR.MINOR.PATCH).
+    severity: warn
+    given: "$.info.version"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[0-9]+\\.[0-9]+\\.[0-9]+"
+
+  # Server Rules
+  servers-https-only:
+    description: All server URLs must use HTTPS for secure communication.
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  servers-defined:
+    description: OpenAPI spec must define at least one server.
+    severity: warn
+    given: "$"
+    then:
+      field: servers
+      function: truthy
+
+  # Path Rules
+  paths-kebab-case:
+    description: API paths must use kebab-case for multi-word path segments.
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9-{}]+)+$"
+
+  paths-no-trailing-slash:
+    description: API paths must not have a trailing slash.
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  # Operation Rules
+  operation-summary-required:
+    description: All operations must have a summary.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: summary
+      function: truthy
+
+  operation-summary-vertx-prefix:
+    description: Operation summaries must start with "Vert.x" to indicate the provider.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Vert\\.x"
+
+  operation-description-required:
+    description: All operations should have a description.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: description
+      function: truthy
+
+  operation-operationid-required:
+    description: All operations must have an operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: operationId
+      function: truthy
+
+  operation-operationid-camel-case:
+    description: Operation IDs should use lowerCamelCase naming convention.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  operation-tags-required:
+    description: All operations must have at least one tag for grouping in documentation.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete,head,options]"
+    then:
+      field: tags
+      function: truthy
+
+  # Parameter Rules
+  parameter-description-required:
+    description: All parameters must have a description.
+    severity: warn
+    given: "$..parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  parameter-name-camel-case:
+    description: Query and header parameter names should use camelCase.
+    severity: hint
+    given: "$.paths[*][get,post,put,patch,delete].parameters[?(@.in == 'query' || @.in == 'header')].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9-]*$"
+
+  # Response Rules
+  response-success-required:
+    description: Operations must define at least one 2xx success response.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["200"]
+            - required: ["201"]
+            - required: ["202"]
+            - required: ["204"]
+
+  response-error-defined:
+    description: Operations should define error responses for client errors (4xx).
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          anyOf:
+            - required: ["400"]
+            - required: ["404"]
+            - required: ["422"]
+            - required: ["500"]
+
+  response-description-required:
+    description: All response objects must have a description.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete,head,options].responses[*]"
+    then:
+      field: description
+      function: truthy
+
+  # Schema Rules
+  schema-type-required:
+    description: All schema objects must define a type.
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: type
+      function: truthy
+
+  schema-description-required:
+    description: All schemas in components must have a description.
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  schema-property-description:
+    description: Schema properties should have descriptions for better developer experience.
+    severity: hint
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: truthy
+
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: "$..description"
+    then:
+      function: pattern
+      functionOptions:
+        match: "\\S+"
+
+  # Security Rules
+  security-schemes-defined:
+    description: API must define security schemes if authentication is required.
+    severity: warn
+    given: "$.components"
+    then:
+      field: securitySchemes
+      function: truthy
+
+  # GET Method Rules
+  get-no-request-body:
+    description: GET operations must not have a request body.
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: requestBody
+      function: falsy
+
+  # Vert.x-Specific Rules
+  vertx-health-check-status-enum:
+    description: Health check status fields should use UP or DOWN values.
+    severity: hint
+    given: "$.components.schemas[?(@.title =~ /.*[Hh]ealth.*/)]..properties.status"
+    then:
+      field: enum
+      function: truthy
+
+  vertx-async-operations-documented:
+    description: Async operations should document their callback or event bus behavior.
+    severity: hint
+    given: "$.paths[*][post,put,patch].responses[202]"
+    then:
+      field: description
+      function: truthy

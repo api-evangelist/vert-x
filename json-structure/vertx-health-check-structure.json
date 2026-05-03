@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://github.com/api-evangelist/vert-x/json-structure/vertx-health-check-structure.json",
+  "name": "Vert.x Health Check Response",
+  "description": "JSON Structure for Vert.x Health Check endpoint response, used for Kubernetes liveness and readiness probes.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Overall health status of the application."
+    },
+    "checks": {
+      "type": "array",
+      "description": "List of individual health check results.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Identifier of the health check procedure."
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of this individual health check."
+          },
+          "data": {
+            "type": "object",
+            "description": "Additional diagnostic data for this health check."
+          }
+        }
+      }
+    },
+    "outcome": {
+      "type": "string",
+      "description": "Alias for status, used in MicroProfile Health compatibility mode."
+    }
+  },
+  "required": ["status"]
+}

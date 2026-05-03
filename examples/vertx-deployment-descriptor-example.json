@@ -1,0 +1,25 @@
+{
+  "main": "com.example.myapp.MainVerticle",
+  "options": {
+    "instances": 4,
+    "worker": false,
+    "multiThreaded": false,
+    "ha": true,
+    "isolationGroup": "app-group",
+    "isolatedClasses": [
+      "com.example.myapp.*",
+      "com.example.shared.*"
+    ],
+    "extraClasspath": [
+      "/opt/app/lib/custom-lib.jar"
+    ],
+    "config": {
+      "database.url": "postgresql://localhost:5432/mydb",
+      "database.pool.maxSize": 10,
+      "cache.ttl": 3600
+    },
+    "workerPoolName": "my-worker-pool",
+    "workerPoolSize": 10,
+    "maxWorkerExecuteTime": 60000000000
+  }
+}
