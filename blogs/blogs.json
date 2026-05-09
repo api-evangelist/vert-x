@@ -3,11 +3,12 @@
   "feeds": [
     {
       "source": "https://vertx.io/blog/",
-      "feed_url": "https://vertx.io/feed/rss.xml",
-      "saved": 10,
-      "title": "Vert.x"
+      "feed_url": "",
+      "title": "",
+      "saved": 0,
+      "error": "no_feed"
     }
   ],
   "post_count": 10,
-  "fetched": "2026-05-03T23:38:01Z"
+  "fetched": "2026-05-09T20:17:51Z"
 }
