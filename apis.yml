@@ -214,7 +214,7 @@ common:
     url: https://www.eclipse.org/legal/termsofuse.php
   - type: License
     url: https://www.eclipse.org/legal/epl-2.0/
-  - type: Changelog
+  - type: ChangeLog
     url: https://github.com/eclipse-vertx/vert.x/blob/master/CHANGELOG.adoc
   - type: MavenCentral
     url: https://central.sonatype.com/search?q=io.vertx
