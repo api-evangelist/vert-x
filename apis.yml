@@ -198,6 +198,10 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/json-structure/vertx-health-check-structure.json
 
 common:
+  - type: VulnerabilityDisclosure
+    url: security/vert-x-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/vert-x-domain-security.yml
   - type: Website
     url: https://vertx.io/
   - type: Documentation
