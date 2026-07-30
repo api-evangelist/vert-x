@@ -9,6 +9,18 @@ description: >-
   applications, IoT backends, and event-driven systems with high concurrency
   using a small memory footprint.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 image: https://vertx.io/images/logo-wide.png
 tags:
   - Event-Driven
