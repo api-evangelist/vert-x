@@ -31,6 +31,16 @@ tags:
   - Polyglot
   - Reactive
   - Eclipse Foundation
+  - Open-Source
+tags_raw:
+  - Event-Driven
+  - Frameworks
+  - Java
+  - JVM
+  - Microservices
+  - Polyglot
+  - Reactive
+  - Eclipse Foundation
   - Open Source
 url: >-
   https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/apis.yml
@@ -168,6 +178,11 @@ apis:
       with a unified async security API that integrates with Vert.x Web routing.
     humanURL: https://vertx.io/docs/vertx-auth-common/java/
     tags:
+      - Authentication
+      - Authorization
+      - JWT
+      - Security
+    tags_raw:
       - Authentication
       - Authorization
       - JWT
