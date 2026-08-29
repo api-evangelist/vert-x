@@ -9,6 +9,18 @@ description: >-
   applications, IoT backends, and event-driven systems with high concurrency
   using a small memory footprint.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -225,6 +237,10 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/json-structure/vertx-health-check-structure.json
 
 common:
+  - type: IssueTracker
+    url: https://github.com/eclipse-vertx/vert.x/issues
+  - type: ContributionGuide
+    url: https://github.com/eclipse-vertx/vert.x/blob/master/CONTRIBUTING.md
   - type: VulnerabilityDisclosure
     url: security/vert-x-vulnerability-disclosure.yml
   - type: DomainSecurity
