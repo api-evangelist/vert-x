@@ -242,6 +242,12 @@ apis:
           https://raw.githubusercontent.com/api-evangelist/vert-x/refs/heads/main/json-structure/vertx-health-check-structure.json
 
 common:
+  - type: Plans
+    url: plans/vert-x-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/vert-x-rate-limits.yml
+  - type: FinOps
+    url: finops/vert-x-finops.yml
   - type: IssueTracker
     url: https://github.com/eclipse-vertx/vert.x/issues
   - type: ContributionGuide
